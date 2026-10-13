@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "paths": { "@/*": ["./src/*"], "@agentlab/live": ["./integrations/elevenlabs/live-workspace.tsx"] } },
+  "exclude": ["node_modules"]
+}

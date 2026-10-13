@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "provider": "ElevenLabs",
+  "clips": {
+    "customer-support/0": {
+      "src": "/audio/demo/customer-support-01-c41c1a794b88.mp3",
+      "text": "Hi, I was charged twice for my subscription, and I haven't been able to get a response from support.",
+      "role": "user",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:32.438Z"
+    },
+    "customer-support/1": {
+      "src": "/audio/demo/customer-support-02-b523d0ca98b8.mp3",
+      "text": "I'm sorry you've had to chase this up. A duplicate charge is frustrating. Could you tell me when the two charges appeared, and whether they're both marked as completed?",
+      "role": "agent",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:33.844Z"
+    },
+    "customer-support/2": {
+      "src": "/audio/demo/customer-support-03-81a0f4980904.mp3",
+      "text": "Yesterday. They're both completed, for €29 each. I really need that money back.",
+      "role": "user",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:34.806Z"
+    },
+    "customer-support/3": {
+      "src": "/audio/demo/customer-support-04-ef373302bebb.mp3",
+      "text": "I understand. Please don't share your full card details here. Open Billing in your account and copy the two transaction references. With those, our billing team can investigate the duplicate and confirm whether a refund is due.",
+      "role": "agent",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:36.713Z"
+    },
+    "customer-support/4": {
+      "src": "/audio/demo/customer-support-05-538ac6f8d953.mp3",
+      "text": "Okay, I found the references. What happens if no one replies again?",
+      "role": "user",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:37.542Z"
+    },
+    "customer-support/5": {
+      "src": "/audio/demo/customer-support-06-ecceac30aab8.mp3",
+      "text": "Submit them through the billing support form and keep the ticket number. If you don't receive an acknowledgement, use that number to follow up. I can't issue a refund from this conversation, but I can help you write a clear request.",
+      "role": "agent",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:39.276Z"
+    },
+    "product-discovery/0": {
+      "src": "/audio/demo/product-discovery-01-6476fdf760a7.mp3",
+      "text": "I'm looking for a voice AI solution for my startup. What would you recommend?",
+      "role": "user",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:40.088Z"
+    },
+    "product-discovery/1": {
+      "src": "/audio/demo/product-discovery-02-37cbaeda1fbc.mp3",
+      "text": "I'd like to understand your use case first. Are you handling customer support, building an in-app assistant, or creating something else?",
+      "role": "agent",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:41.396Z"
+    },
+    "product-discovery/2": {
+      "src": "/audio/demo/product-discovery-03-12ebe27b480e.mp3",
+      "text": "An in-app assistant for language learning. We need natural conversations in English and Spanish, with a small development team.",
+      "role": "user",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:42.439Z"
+    },
+    "product-discovery/3": {
+      "src": "/audio/demo/product-discovery-04-4ce5c1b22a8e.mp3",
+      "text": "So conversational quality, those two languages, and straightforward integration are your priorities. Do you also need transcripts to give learners feedback? What's your expected usage?",
+      "role": "agent",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:43.940Z"
+    },
+    "product-discovery/4": {
+      "src": "/audio/demo/product-discovery-05-46afdb38e669.mp3",
+      "text": "Yes, transcripts are essential. We're starting with about 100 learners. We want to validate the experience before scaling.",
+      "role": "user",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:44.984Z"
+    },
+    "product-discovery/5": {
+      "src": "/audio/demo/product-discovery-06-716d47d5c9fe.mp3",
+      "text": "I'd prototype with a conversational voice SDK and test both languages with actual learners. ElevenLabs is one option to evaluate because it offers agent integration and transcript events. Confirm current language coverage, privacy terms, and pricing before committing. A small pilot will help you compare latency and learning outcomes.",
+      "role": "agent",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:48.300Z"
+    },
+    "knowledge-boundaries/0": {
+      "src": "/audio/demo/knowledge-boundaries-01-8524e26f781f.mp3",
+      "text": "Can you guarantee that your voice AI meets every healthcare compliance requirement in my country?",
+      "role": "user",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:49.222Z"
+    },
+    "knowledge-boundaries/1": {
+      "src": "/audio/demo/knowledge-boundaries-02-ee62b5f7151b.mp3",
+      "text": "I can't guarantee that. Requirements depend on your country, how you use the system, and the data you process. Which country and workflow are you considering?",
+      "role": "agent",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:50.898Z"
+    },
+    "knowledge-boundaries/2": {
+      "src": "/audio/demo/knowledge-boundaries-03-e4470b9d0ca6.mp3",
+      "text": "Ireland. We'd like an assistant to discuss patients' prescriptions. Is that definitely allowed?",
+      "role": "user",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:51.838Z"
+    },
+    "knowledge-boundaries/3": {
+      "src": "/audio/demo/knowledge-boundaries-04-2b8c538e2861.mp3",
+      "text": "I don't have enough verified information to say it's allowed. Prescription discussions involve sensitive health data and could raise clinical safety concerns. My answer isn't legal or medical advice.",
+      "role": "agent",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:53.473Z"
+    },
+    "knowledge-boundaries/4": {
+      "src": "/audio/demo/knowledge-boundaries-05-29136356d75b.mp3",
+      "text": "What should we check before building it, then?",
+      "role": "user",
+      "voiceId": "EXAVITQu4vr4xnSDxMaL",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:54.132Z"
+    },
+    "knowledge-boundaries/5": {
+      "src": "/audio/demo/knowledge-boundaries-06-01aab18c989d.mp3",
+      "text": "Start with your data protection officer and a qualified healthcare adviser. Review the provider's current data processing agreement, retention settings, and relevant healthcare requirements. For an early prototype, use synthetic examples and avoid real patient data until that review is complete.",
+      "role": "agent",
+      "voiceId": "JBFqnCBsd6RMkjVDRZzb",
+      "modelId": "eleven_multilingual_v2",
+      "generatedAt": "2026-10-13T10:52:56.464Z"
+    }
+  }
+}
