@@ -1,98 +1,72 @@
-# Publish AgentLab
+# AgentLab deployment
 
-No GitHub/Vercel CLI or connected account was available, and this sandbox denies network and local server operations. The workspace's `.git` directory is read-only. Publication and deployed verification require running the following from your normal terminal/account.
+The owner reports the application is deployed at [agent-lab-beryl.vercel.app](https://agent-lab-beryl.vercel.app/dashboard?mode=demo). The Git remote points to [NathanHodgkiss447/AgentLab](https://github.com/NathanHodgkiss447/AgentLab), currently on branch `master`.
 
-A local `agentlab-source.bundle` contains the committed application source without environment files or build/dependency output. If you prefer to retain that commit, clone the bundle into a new writable folder and publish from there:
+This workspace cannot reach the deployment or run Chrome, so public repository visibility, Vercel-to-GitHub linkage, production navigation, audio, and mobile behaviour have not been independently verified. The local build and automated checks are recorded in [verification.md](verification.md).
 
-```sh
-git clone /home/nathan/Documents/Github/agent-lab/agentlab-source.bundle /tmp/agentlab-publish
-cd /tmp/agentlab-publish
-```
+## Publishing subsequent changes
 
-The remaining instructions apply to either that clone or the original workspace. Do not run `git init`/`git commit` again when using the existing bundle commit.
-
-## GitHub
-
-First complete the local verification below. Check that environment files are excluded:
+Run from your normal terminal after reviewing the changes:
 
 ```sh
-git init
+npm run check
+npm run build
 git check-ignore .env.local .env
+git diff --stat
 git add .
 git diff --cached --stat
-git status --short
-git commit -m "Build AgentLab voice agent testing studio"
-git branch -M main
+git commit -m "refactor: improve readability and regression coverage"
+git push origin master
 ```
 
-Use the GitHub website to create a **public** repository named `agentlab` with description:
+Review staged files for credentials before committing. The workspace agent cannot write the actual `.git` directory; it has not committed or pushed this refactor. If Vercel is connected to the repository, pushing its configured production branch should trigger deployment. Check the Vercel project settings and resulting deployment rather than assuming that connection exists.
 
-> Developer-focused AI voice agent testing studio built with Next.js, TypeScript and ElevenLabs.
+## Vercel configuration
 
-Do not initialise it with another README. Copy the actual remote URL GitHub displays, then run:
-
-```sh
-git remote add origin YOUR_ACTUAL_REPOSITORY_URL
-git push -u origin main
-```
-
-If GitHub CLI is installed/authenticated, you can instead run:
-
-```sh
-gh repo create agentlab --public --source=. --remote=origin --push --description "Developer-focused AI voice agent testing studio built with Next.js, TypeScript and ElevenLabs."
-```
-
-Set `NEXT_PUBLIC_GITHUB_URL` to the actual repository URL locally and in Vercel. The UI shows project documentation until a repository URL is configured, avoiding fabricated or dead GitHub links.
-
-## Vercel
-
-1. Sign into Vercel and select Add New → Project.
-2. Connect GitHub and import the actual `agentlab` repository.
-3. Framework: Next.js. Root: repository root. Install: `npm ci`. Build: `npm run build`.
-4. Use Node.js 24. Leave ElevenLabs secrets unset and keep `ENABLE_LIVE_VOICE=false`.
-5. Add `NEXT_PUBLIC_GITHUB_URL` using your real published repository URL.
-6. Deploy and copy the actual generated production URL.
-7. Verify the site in a browser using the checklist below.
-8. Update README Introduction/Deployment with the verified GitHub and Vercel URLs, then commit and push.
+- Framework: Next.js; root: repository root; Node.js 24.
+- Install command: `npm ci`, **not** `npm run ci` (there is no `ci` npm script).
+- Build command: `npm run build`.
+- No ElevenLabs credentials are needed for Demo Mode. Keep `ENABLE_LIVE_VOICE=false` and production secrets unset.
+- Set `NEXT_PUBLIC_GITHUB_URL=https://github.com/NathanHodgkiss447/AgentLab` for the source link.
+- All 18 generated MP3s and the matching manifest are already present. Keep them tracked; deploying never needs to regenerate paid audio.
 
 ## Local verification
 
 ```sh
 npm ci
-npm run typecheck
-npm run lint
-npm test
+npm run check
 npm run build
 npm run dev
 ```
 
-To test the optional SDK, additionally run `npm run setup:live`, configure `.env.local`, restart the server, and verify a genuine voice session. Do not publish SDK verification claims until this succeeds.
+For local live testing, configure `.env.local` following [elevenlabs.md](elevenlabs.md), restart the server, and verify a genuine voice session. Public live access remains denied regardless of the enable flag.
 
-For repeatable real-browser Demo checks/screenshots, start an isolated Chrome process from another terminal:
+## Browser verification
+
+Start an isolated Chrome process from your normal terminal:
 
 ```sh
 google-chrome --headless --disable-gpu --remote-debugging-port=9225 --user-data-dir=/tmp/agentlab-qa-browser about:blank
-node scripts/browser-qa.mjs
+AGENTLAB_BASE_URL=https://agent-lab-beryl.vercel.app node scripts/browser-qa.mjs
 ```
 
-The script uses the Chrome debugging protocol directly, not a mocked browser. It checks route navigation, overflow, a real Demo→evaluation→history loop, production denial, console errors, and captures screenshots. Run it against production by setting `AGENTLAB_BASE_URL` to the actual deployed origin. Only use the isolated debugging profile; do not attach it to your normal signed-in browser.
+The script uses the real Chrome debugging protocol. It checks navigation, overflow, a Demo→evaluation→history loop, production denial, console errors, and captures screenshots. Use only an isolated debugging profile, never your normal signed-in browser. Headless tests cannot establish audible quality; also listen in a regular browser.
 
 ## Deployed verification checklist
 
-- Landing Open Demo and all navigation routes work.
-- All three scripts complete, can stop/reset, and display accurate completed messages.
-- Run `npm run demo:audio:generate` locally once, verify `npm run demo:audio:check`, and commit `public/audio/demo/*.mp3` and `src/data/demo-audio-manifest.json` before deployment.
-- With sound enabled, pre-recorded ElevenLabs clips play both speakers and the transcript advances with audio completion. Mute cancels playback; unavailable/blocked clips show a text-playback notice.
-- Session review saves manual criteria, assessment, and notes.
-- History displays saved data, exports JSON, and confirms deletion.
-- Settings preferences persist after reload; system and application reduced-motion work.
-- At 375px/390px, no horizontal overflow and bottom navigation remains usable.
-- Browser console has no application errors; keyboard focus and confirmation dialog work.
-- No microphone prompt or ElevenLabs network request in Demo Mode.
-- Production `POST /api/voice/signed-url` returns 403 even with the live enable flag.
+- Landing Open Demo and all main navigation routes work.
+- All three scripts complete, stop/reset work, and transcript turns match playback.
+- With Sound on, ElevenLabs recordings play both speakers. Mute cancels playback; blocked or unavailable audio falls back to labelled text playback.
+- Review saves manual criteria, assessment, and notes; history survives reload.
+- Individual, transcript, and bulk JSON downloads work; deletion requires confirmation.
+- Preferences persist; system and application reduced-motion work.
+- At 375px/390px there is no horizontal overflow and mobile navigation is usable.
+- No application console errors; keyboard tabs, focus indicators, and confirmation dialog work.
+- Demo never prompts for microphone access or calls ElevenLabs.
+- Production signed-URL requests return 403 with no credentials or signed URL:
 
 ```sh
-curl -i -X POST ACTUAL_DEPLOYED_ORIGIN/api/voice/signed-url
+curl -i -X POST https://agent-lab-beryl.vercel.app/api/voice/signed-url
 ```
 
-Confirm a 403 response with no credentials or signed URL. HTTP health/build success alone is not visual or workflow verification.
+An HTTP health check or passing build alone does not verify the user workflow or visual fidelity.

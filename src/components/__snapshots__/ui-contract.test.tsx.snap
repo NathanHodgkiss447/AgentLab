@@ -1,0 +1,566 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`UI contracts captured before the readability refactor > preserves completed-session review navigation 1`] = `
+{
+  "alerts": [],
+  "buttons": [
+    {
+      "disabled": false,
+      "label": "Mute demo audio",
+      "pressed": "false",
+    },
+    {
+      "disabled": false,
+      "label": "Start demo",
+      "pressed": null,
+    },
+    {
+      "disabled": false,
+      "label": "Reset conversation",
+      "pressed": null,
+    },
+    {
+      "disabled": false,
+      "label": "Session options",
+      "pressed": null,
+    },
+  ],
+  "fields": [],
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Customer Support",
+    },
+    {
+      "tag": "H2",
+      "text": "Conversation complete",
+    },
+  ],
+  "links": [
+    {
+      "current": null,
+      "href": "/scenarios",
+      "label": "Change scenario",
+    },
+    {
+      "current": null,
+      "href": "/sessions/ui-contract-session",
+      "label": "Review session",
+    },
+    {
+      "current": null,
+      "href": "/docs",
+      "label": "How AgentLab works",
+    },
+  ],
+  "progress": [],
+  "statuses": [
+    "Conversation complete1 messages captured. Ready for your review.",
+    "1 completed messages in transcript.",
+  ],
+  "switches": [],
+  "tabs": [
+    {
+      "controls": "transcript-panel",
+      "label": "Transcript1",
+      "selected": "true",
+      "tabIndex": 0,
+    },
+    {
+      "controls": "evaluation-content",
+      "label": "Evaluation",
+      "selected": "false",
+      "tabIndex": -1,
+    },
+  ],
+}
+`;
+
+exports[`UI contracts captured before the readability refactor > preserves desktop/mobile history actions 1`] = `
+{
+  "alerts": [],
+  "buttons": [
+    {
+      "disabled": false,
+      "label": "Export all",
+      "pressed": null,
+    },
+    {
+      "disabled": false,
+      "label": "Export session JSON",
+      "pressed": null,
+    },
+    {
+      "disabled": false,
+      "label": "Delete session",
+      "pressed": null,
+    },
+    {
+      "disabled": false,
+      "label": "Export session JSON",
+      "pressed": null,
+    },
+    {
+      "disabled": false,
+      "label": "Delete session",
+      "pressed": null,
+    },
+  ],
+  "fields": [],
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Session History",
+    },
+    {
+      "tag": "H2",
+      "text": "Customer Support",
+    },
+  ],
+  "links": [
+    {
+      "current": null,
+      "href": "/sessions/ui-contract-session",
+      "label": "Customer Support",
+    },
+    {
+      "current": null,
+      "href": "/sessions/ui-contract-session",
+      "label": "Review Customer Support session",
+    },
+    {
+      "current": null,
+      "href": "/sessions/ui-contract-session",
+      "label": "Customer Support",
+    },
+    {
+      "current": null,
+      "href": "/sessions/ui-contract-session",
+      "label": "Review",
+    },
+  ],
+  "progress": [],
+  "statuses": [],
+  "switches": [],
+  "tabs": [],
+}
+`;
+
+exports[`UI contracts captured before the readability refactor > preserves live microphone controls 1`] = `
+{
+  "alerts": [],
+  "buttons": [
+    {
+      "disabled": false,
+      "label": "Unmute microphone",
+      "pressed": null,
+    },
+    {
+      "disabled": false,
+      "label": "End conversation",
+      "pressed": null,
+    },
+    {
+      "disabled": true,
+      "label": "Reset conversation",
+      "pressed": null,
+    },
+    {
+      "disabled": false,
+      "label": "Session options",
+      "pressed": null,
+    },
+  ],
+  "fields": [],
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Customer Support",
+    },
+    {
+      "tag": "H2",
+      "text": "Agent is listening…",
+    },
+    {
+      "tag": "H3",
+      "text": "Your conversation, captured.",
+    },
+  ],
+  "links": [
+    {
+      "current": null,
+      "href": "/scenarios",
+      "label": "Change scenario",
+    },
+    {
+      "current": null,
+      "href": "/docs",
+      "label": "How AgentLab works",
+    },
+  ],
+  "progress": [],
+  "statuses": [
+    "Agent is listening…Real-time voice · SDK audio levels",
+    "Transcript is empty.",
+  ],
+  "switches": [],
+  "tabs": [
+    {
+      "controls": "transcript-panel",
+      "label": "Transcript0",
+      "selected": "true",
+      "tabIndex": 0,
+    },
+    {
+      "controls": "evaluation-content",
+      "label": "Evaluation",
+      "selected": "false",
+      "tabIndex": -1,
+    },
+  ],
+}
+`;
+
+exports[`UI contracts captured before the readability refactor > preserves playback controls and disabled states 1`] = `
+{
+  "alerts": [],
+  "buttons": [
+    {
+      "disabled": false,
+      "label": "Mute demo audio",
+      "pressed": "false",
+    },
+    {
+      "disabled": false,
+      "label": "Stop demo",
+      "pressed": null,
+    },
+    {
+      "disabled": true,
+      "label": "Reset conversation",
+      "pressed": null,
+    },
+    {
+      "disabled": false,
+      "label": "Session options",
+      "pressed": null,
+    },
+  ],
+  "fields": [],
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Customer Support",
+    },
+    {
+      "tag": "H2",
+      "text": "Agent is speaking…",
+    },
+  ],
+  "links": [
+    {
+      "current": null,
+      "href": "/scenarios",
+      "label": "Change scenario",
+    },
+    {
+      "current": null,
+      "href": "/docs",
+      "label": "How AgentLab works",
+    },
+  ],
+  "progress": [],
+  "statuses": [
+    "Agent is speaking…Pre-recorded ElevenLabs voices · decorative waveform",
+    "1 completed messages in transcript.",
+  ],
+  "switches": [],
+  "tabs": [
+    {
+      "controls": "transcript-panel",
+      "label": "Transcript1",
+      "selected": "true",
+      "tabIndex": 0,
+    },
+    {
+      "controls": "evaluation-content",
+      "label": "Evaluation",
+      "selected": "false",
+      "tabIndex": -1,
+    },
+  ],
+}
+`;
+
+exports[`UI contracts captured before the readability refactor > preserves settings controls 1`] = `
+{
+  "alerts": [],
+  "buttons": [],
+  "fields": [
+    {
+      "checked": false,
+      "disabled": false,
+      "id": "configured-agent",
+      "type": "text",
+      "value": "Not configured for live access",
+    },
+  ],
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Settings",
+    },
+    {
+      "tag": "H2",
+      "text": "Voice agent configuration",
+    },
+    {
+      "tag": "H3",
+      "text": "Local setup",
+    },
+    {
+      "tag": "H2",
+      "text": "Application preferences",
+    },
+  ],
+  "links": [
+    {
+      "current": null,
+      "href": "/docs#live-voice",
+      "label": "Integration instructions",
+    },
+  ],
+  "progress": [],
+  "statuses": [],
+  "switches": [
+    {
+      "checked": "true",
+      "disabled": false,
+      "id": "demoMode",
+    },
+    {
+      "checked": "true",
+      "disabled": false,
+      "id": "autoSave",
+    },
+    {
+      "checked": "false",
+      "disabled": false,
+      "id": "reducedMotion",
+    },
+  ],
+  "tabs": [],
+}
+`;
+
+exports[`UI contracts captured before the readability refactor > preserves the idle Demo controls and transcript 1`] = `
+{
+  "alerts": [],
+  "buttons": [
+    {
+      "disabled": false,
+      "label": "Mute demo audio",
+      "pressed": "false",
+    },
+    {
+      "disabled": false,
+      "label": "Start demo",
+      "pressed": null,
+    },
+    {
+      "disabled": true,
+      "label": "Reset conversation",
+      "pressed": null,
+    },
+    {
+      "disabled": false,
+      "label": "Session options",
+      "pressed": null,
+    },
+  ],
+  "fields": [],
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Customer Support",
+    },
+    {
+      "tag": "H2",
+      "text": "Ready to start a conversation",
+    },
+    {
+      "tag": "H3",
+      "text": "Your conversation, captured.",
+    },
+  ],
+  "links": [
+    {
+      "current": null,
+      "href": "/scenarios",
+      "label": "Change scenario",
+    },
+    {
+      "current": null,
+      "href": "/docs",
+      "label": "How AgentLab works",
+    },
+  ],
+  "progress": [],
+  "statuses": [
+    "Ready to start a conversationHear a scripted conversation with pre-recorded ElevenLabs voices.",
+    "Transcript is empty.",
+  ],
+  "switches": [],
+  "tabs": [
+    {
+      "controls": "transcript-panel",
+      "label": "Transcript0",
+      "selected": "true",
+      "tabIndex": 0,
+    },
+    {
+      "controls": "evaluation-content",
+      "label": "Evaluation",
+      "selected": "false",
+      "tabIndex": -1,
+    },
+  ],
+}
+`;
+
+exports[`UI contracts captured before the readability refactor > preserves the review form 1`] = `
+{
+  "alerts": [],
+  "buttons": [
+    {
+      "disabled": false,
+      "label": "Save session",
+      "pressed": null,
+    },
+    {
+      "disabled": false,
+      "label": "Export",
+      "pressed": null,
+    },
+    {
+      "disabled": false,
+      "label": "Save session",
+      "pressed": null,
+    },
+    {
+      "disabled": false,
+      "label": "Export JSON",
+      "pressed": null,
+    },
+  ],
+  "fields": [
+    {
+      "checked": false,
+      "disabled": false,
+      "id": "",
+      "type": "checkbox",
+      "value": "on",
+    },
+    {
+      "checked": false,
+      "disabled": false,
+      "id": "",
+      "type": "checkbox",
+      "value": "on",
+    },
+    {
+      "checked": false,
+      "disabled": false,
+      "id": "",
+      "type": "checkbox",
+      "value": "on",
+    },
+    {
+      "checked": false,
+      "disabled": false,
+      "id": "",
+      "type": "checkbox",
+      "value": "on",
+    },
+    {
+      "checked": false,
+      "disabled": false,
+      "id": "",
+      "type": "checkbox",
+      "value": "on",
+    },
+    {
+      "checked": false,
+      "disabled": false,
+      "id": "",
+      "type": "radio",
+      "value": "pass",
+    },
+    {
+      "checked": false,
+      "disabled": false,
+      "id": "",
+      "type": "radio",
+      "value": "needs-improvement",
+    },
+    {
+      "checked": false,
+      "disabled": false,
+      "id": "",
+      "type": "radio",
+      "value": "fail",
+    },
+    {
+      "checked": true,
+      "disabled": false,
+      "id": "",
+      "type": "radio",
+      "value": "not-evaluated",
+    },
+    {
+      "checked": undefined,
+      "disabled": false,
+      "id": "evaluation-notes",
+      "type": "textarea",
+      "value": "",
+    },
+  ],
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Session Evaluation",
+    },
+    {
+      "tag": "H2",
+      "text": "Session overview",
+    },
+    {
+      "tag": "H2",
+      "text": "Transcript",
+    },
+    {
+      "tag": "H2",
+      "text": "Evaluation checklist",
+    },
+  ],
+  "links": [
+    {
+      "current": null,
+      "href": "/dashboard",
+      "label": "Return to dashboard",
+    },
+  ],
+  "progress": [
+    {
+      "label": "Human-assessed checklist completion",
+      "value": "0",
+    },
+  ],
+  "statuses": [
+    "1 completed messages in transcript.",
+    "",
+  ],
+  "switches": [],
+  "tabs": [],
+}
+`;

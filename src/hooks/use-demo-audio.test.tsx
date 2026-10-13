@@ -22,8 +22,12 @@ class ClipAudio {
   play = vi.fn(() => Promise.resolve());
   pause = vi.fn();
   load = vi.fn();
-  removeAttribute = vi.fn((name: string) => { if (name === "src") this.src = ""; });
-  constructor() { ClipAudio.instances.push(this); }
+  removeAttribute = vi.fn((name: string) => {
+    if (name === "src") this.src = "";
+  });
+  constructor() {
+    ClipAudio.instances.push(this);
+  }
 }
 
 beforeEach(() => {
@@ -31,7 +35,11 @@ beforeEach(() => {
   vi.useFakeTimers();
   vi.stubGlobal("Audio", ClipAudio);
 });
-afterEach(() => { cleanup(); vi.unstubAllGlobals(); vi.useRealTimers(); });
+afterEach(() => {
+  cleanup();
+  vi.unstubAllGlobals();
+  vi.useRealTimers();
+});
 
 describe("pre-generated ElevenLabs Demo playback", () => {
   it("plays a same-origin clip from the click and waits for its ended event before advancing", () => {
@@ -55,7 +63,10 @@ describe("pre-generated ElevenLabs Demo playback", () => {
 
   it("finishes all clips once and stores a simulated transcript", () => {
     const { result } = renderHook(() => useDemoConversation("product-discovery", 1));
-    act(() => { result.current.start(); result.current.start(); });
+    act(() => {
+      result.current.start();
+      result.current.start();
+    });
     const audio = ClipAudio.instances[0];
     for (let i = 0; i < 6; i++) {
       act(() => audio.onended?.());
@@ -112,7 +123,9 @@ describe("pre-generated ElevenLabs Demo playback", () => {
   it("handles an autoplay rejection without hanging or using browser synthesis", async () => {
     const { result } = renderHook(() => useDemoConversation("customer-support", 4));
     // Model a browser that rejects playback until it receives a valid gesture.
-    class BlockedAudio extends ClipAudio { play = vi.fn(() => Promise.reject(new DOMException("Blocked", "NotAllowedError"))); }
+    class BlockedAudio extends ClipAudio {
+      play = vi.fn(() => Promise.reject(new DOMException("Blocked", "NotAllowedError")));
+    }
     vi.stubGlobal("Audio", BlockedAudio);
     await act(async () => result.current.start());
     expect(result.current.demoAudio?.notice).toMatch(/could not play/);

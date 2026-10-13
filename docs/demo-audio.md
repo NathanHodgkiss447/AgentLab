@@ -41,4 +41,4 @@ Reload the dashboard after generation. Press Start demo with Sound on. The same 
 
 ## Verification status
 
-The generation command is implemented, and its offline plan and asset checker can run without credentials. The sandbox cannot reach ElevenLabs; the actual 18 MP3s still need generation from the user's terminal. `npm run demo:audio:check` must pass before claiming the recordings are bundled. Automated playback tests use media doubles; audible quality and actual media playback still need a browser listening check.
+The owner generated all 18 MP3s from their terminal. The clips and matching manifest are present, and `npm run demo:audio:check` passes locally without credentials. Automated playback tests use media doubles; audible quality and actual deployed media playback still need a browser listening check. Regeneration requires account credentials and consumes credits; visitor playback does not.

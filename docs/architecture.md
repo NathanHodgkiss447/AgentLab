@@ -2,6 +2,12 @@
 
 The product loop is scenario selection → conversation → transcript → manual evaluation → history/export. Next.js routes model each major screen. The sidebar and mobile bottom navigation share route definitions. The root provider owns only persisted records and preferences.
 
+## UI composition and readability
+
+Prettier owns consistent formatting; `npm run format:check` detects drift. The dashboard workspace orchestrates evaluation and session persistence, while focused controls, status, and details components render their respective concerns through typed props. Review composes the session overview, checklist, and assessment form. History keeps storage/export/deletion orchestration separate from desktop table and mobile card presentation. These are product boundaries, not a generic component framework.
+
+Preference writes run in the event callback, never inside a React state updater. A synchronised ref keeps consecutive updates composable before a render and follows cross-tab storage reloads. Strict Mode tests cover batched changes and storage failures. Baseline UI-contract snapshots and behavioural tests guard labels, navigation, disabled controls, tabs, and the complete recruiter journey; they do not replace browser visual QA.
+
 ## Domain boundaries
 
 `Scenario` contains testing guidance and criteria. It does not override the remote agent prompt. `Session` stores mode, start/end times, duration, completed messages, completion reason, and manual evaluation. `ConversationView` is the interface used by the workspace; both controllers produce it.

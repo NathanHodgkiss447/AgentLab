@@ -8,7 +8,9 @@ A developer-focused AI voice agent testing studio built with Next.js, TypeScript
 
 AgentLab is a focused portfolio MVP demonstrating a complete conversation-testing workflow. Public Demo Mode works without authentication, credentials, a database, or ElevenLabs usage. Live voice is an optional local development integration, never an unauthenticated production feature.
 
-**Publication status:** not published. No GitHub or Vercel URL has been verified. See [deployment instructions](docs/deployment.md) for the exact remaining steps.
+**Demo:** [Open AgentLab](https://agent-lab-beryl.vercel.app/dashboard?mode=demo) · **Source:** [NathanHodgkiss447/AgentLab](https://github.com/NathanHodgkiss447/AgentLab).
+
+The owner reports the Vercel deployment is live. This workspace cannot access the deployed site, so independent production workflow, mobile, and audio verification remain pending. See [deployment checks](docs/deployment.md).
 
 ## 2. Features
 
@@ -31,7 +33,7 @@ Rendered screenshots are pending: this execution environment blocks the local se
 
 ## 4. Technology stack
 
-Next.js 16 App Router, React 19, strict TypeScript, Tailwind CSS 4, customised shadcn/ui primitives, Radix Dialog/Switch/Slot, Lucide, Motion, Zod, Vitest, and React Testing Library. Geist is bundled locally so a build does not require Google Fonts access. Dependencies are pinned and a lockfile is included.
+Next.js 16 App Router, React 19, strict TypeScript, Tailwind CSS 4, customised shadcn/ui primitives, Radix Dialog/Switch/Slot, Lucide, Motion, Zod, Vitest, React Testing Library, and Prettier. Geist is bundled locally so a build does not require Google Fonts access. A dependency lockfile is included.
 
 The optional ElevenLabs adapter targets `@elevenlabs/react` 1.17.0. See [integration notes](docs/elevenlabs.md) for the API contract and validation status.
 
@@ -63,9 +65,7 @@ npm run dev
 Open `http://127.0.0.1:3000`. No environment file is required for Demo Mode. The server binds to loopback intentionally.
 
 ```sh
-npm run typecheck
-npm run lint
-npm test
+npm run check
 npm run build
 npm start
 ```
@@ -114,13 +114,15 @@ History belongs to the current browser and origin. It does not sync across devic
 
 Vitest covers scoring, scenarios, validation, history persistence, transcript corrections/deduplication, valid phase transitions, Demo cancellation/cleanup, the complete Demo→review→save→delete journey, and the actual production route handler's fail-closed response. React Testing Library checks labelled controls and manual checklist interaction.
 
+Run `npm run check` for formatting, both TypeScript configurations, ESLint, tests, and static audio validation; run `npm run build` separately. Use `npm run format` to format source. UI-contract snapshots were captured before component extraction and are checked unchanged; interaction tests cover tab keyboard navigation, transition controls, and Strict Mode preference persistence. Review intentional UI changes before updating snapshots.
+
 TypeScript, ESLint, unit/component tests, and the production build were executed successfully. See [verification record](docs/verification.md) for exact results and the browser/live/deployment checks still pending. No live platform is mocked to claim a genuine connection.
 
 ## 10. Deployment
 
-Standard Next.js hosting on Vercel needs no secrets for Demo Mode. Keep `ENABLE_LIVE_VOICE=false`. Import the public `agentlab` GitHub repository into Vercel and select Next.js; build command `npm run build`. No database, writable server filesystem, or voice credentials are needed.
+The owner deployed [AgentLab on Vercel](https://agent-lab-beryl.vercel.app/dashboard?mode=demo) from [AgentLab on GitHub](https://github.com/NathanHodgkiss447/AgentLab). Standard Next.js hosting needs no secrets for Demo Mode. Keep `ENABLE_LIVE_VOICE=false`; install command `npm ci` (not `npm run ci`), build command `npm run build`. No database, writable server filesystem, or voice credentials are needed.
 
-Follow [docs/deployment.md](docs/deployment.md) to publish, validate the generated URL, test the production signed-URL denial, and update this README. No deployment URL is fabricated.
+Follow [docs/deployment.md](docs/deployment.md) to verify the deployed workflow and production signed-URL denial. These external checks cannot run in this restricted workspace; the deployment URL is owner-provided, not independently verified here.
 
 ## 11. Security
 

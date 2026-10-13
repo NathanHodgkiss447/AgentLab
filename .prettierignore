@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+coverage/
+.vercel/
+package-lock.json
+next-env.d.ts
+src/data/demo-audio-manifest.json
+public/audio/
+public/fonts/
+mockup/
+docs/screenshots/
+*.bundle
+*.tsbuildinfo
+*.part
+.env*

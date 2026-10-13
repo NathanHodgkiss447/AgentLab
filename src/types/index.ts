@@ -1,5 +1,14 @@
 export type Mode = "demo" | "live";
-export type Phase = "idle" | "requesting-permission" | "connecting" | "connected" | "listening" | "speaking" | "disconnecting" | "disconnected" | "error";
+export type Phase =
+  | "idle"
+  | "requesting-permission"
+  | "connecting"
+  | "connected"
+  | "listening"
+  | "speaking"
+  | "disconnecting"
+  | "disconnected"
+  | "error";
 export type Assessment = "pass" | "needs-improvement" | "fail" | "not-evaluated";
 export type ScenarioId = "customer-support" | "product-discovery" | "knowledge-boundaries";
 export interface Scenario {
@@ -34,8 +43,16 @@ export interface Session {
   conversationId?: string;
   completion: "finished" | "stopped" | "connection-lost";
 }
-export interface Preferences { demoMode: boolean; autoSave: boolean; reducedMotion: boolean }
-export interface VoiceConfiguration { available: boolean; agentId: string | null; reason: string }
+export interface Preferences {
+  demoMode: boolean;
+  autoSave: boolean;
+  reducedMotion: boolean;
+}
+export interface VoiceConfiguration {
+  available: boolean;
+  agentId: string | null;
+  reason: string;
+}
 export interface DemoAudio {
   enabled: boolean;
   supported: boolean | null;
@@ -43,8 +60,13 @@ export interface DemoAudio {
   toggle: () => void;
 }
 export interface ConversationView {
-  phase: Phase; messages: Message[]; elapsed: number; error: string | null;
-  muted: boolean; level: number | null; session: Session | null;
+  phase: Phase;
+  messages: Message[];
+  elapsed: number;
+  error: string | null;
+  muted: boolean;
+  level: number | null;
+  session: Session | null;
   start: () => void | Promise<void>;
   stop: () => void | Promise<void>;
   reset: () => void;

@@ -2,7 +2,11 @@ export function supportsDemoAudio(): boolean {
   return typeof window !== "undefined" && typeof window.Audio === "function";
 }
 
-interface AudioCallbacks { onStart: () => void; onComplete: () => void; onError: () => void }
+interface AudioCallbacks {
+  onStart: () => void;
+  onComplete: () => void;
+  onError: () => void;
+}
 export interface DemoAudioPlayer {
   play: (src: string, speed: number, callbacks: AudioCallbacks) => () => void;
   dispose: () => void;
@@ -34,9 +38,13 @@ export function createDemoAudioPlayer(): DemoAudioPlayer {
       };
       const settle = (failed: boolean) => {
         if (!active) return;
-        active = false; detach(); cancelCurrent = null;
-        if (failed) { release(); callbacks.onError(); }
-        else callbacks.onComplete();
+        active = false;
+        detach();
+        cancelCurrent = null;
+        if (failed) {
+          release();
+          callbacks.onError();
+        } else callbacks.onComplete();
       };
       const armTimeout = (milliseconds: number) => {
         clearTimeout(watchdog);
@@ -45,22 +53,37 @@ export function createDemoAudioPlayer(): DemoAudioPlayer {
       audio.src = src;
       audio.defaultPlaybackRate = Math.min(4, Math.max(0.5, speed));
       audio.playbackRate = audio.defaultPlaybackRate;
-      audio.onplaying = () => { if (active) callbacks.onStart(); };
+      audio.onplaying = () => {
+        if (active) callbacks.onStart();
+      };
       audio.onended = () => settle(false);
       audio.onerror = () => settle(true);
       audio.onloadedmetadata = () => {
         if (active && Number.isFinite(audio.duration) && audio.duration > 0)
-          armTimeout(Math.min(120000, Math.max(15000, audio.duration * 1000 / audio.playbackRate + 10000)));
+          armTimeout(
+            Math.min(120000, Math.max(15000, (audio.duration * 1000) / audio.playbackRate + 10000)),
+          );
       };
       armTimeout(15000);
       const cancel = () => {
         if (!active) return;
-        active = false; detach(); cancelCurrent = null; release();
+        active = false;
+        detach();
+        cancelCurrent = null;
+        release();
       };
       cancelCurrent = cancel;
-      try { audio.play()?.catch(() => settle(true)); } catch { settle(true); }
+      try {
+        audio.play()?.catch(() => settle(true));
+      } catch {
+        settle(true);
+      }
       return cancel;
     },
-    dispose() { cancelCurrent?.(); cancelCurrent = null; release(); },
+    dispose() {
+      cancelCurrent?.();
+      cancelCurrent = null;
+      release();
+    },
   };
 }
