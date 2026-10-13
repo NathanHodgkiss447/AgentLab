@@ -17,13 +17,15 @@ export function Dashboard({ configuration }: { configuration: VoiceConfiguration
         Preparing your workspace…
       </div>
     );
+  const requestedMode = search.get("mode");
   const initialMode: Mode =
-    search.get("mode") === "demo" || !configuration.available || preferences.demoMode
-      ? "demo"
-      : "live";
+    configuration.available &&
+    (requestedMode === "live" || (requestedMode !== "demo" && !preferences.demoMode))
+      ? "live"
+      : "demo";
   return (
     <DashboardSession
-      key={scenario.id}
+      key={`${scenario.id}-${initialMode}`}
       scenarioId={scenario.id}
       initialMode={initialMode}
       configuration={configuration}

@@ -65,6 +65,30 @@ async function navigate(path, selector = "h1") {
 async function click(selector) {
   await evaluate(`document.querySelector(${JSON.stringify(selector)}).click()`);
 }
+async function clickNavigationLink(selector) {
+  const point = await evaluate(`(() => {
+    const link = document.querySelector(${JSON.stringify(selector)});
+    if (!link) throw new Error('Missing navigation link');
+    const bounds = link.getBoundingClientRect();
+    const x = bounds.left + bounds.width / 2;
+    const y = bounds.top + bounds.height / 2;
+    if (document.elementFromPoint(x, y)?.closest('a') !== link)
+      throw new Error('Navigation link is covered by another element');
+    return { x, y };
+  })()`);
+  await send("Input.dispatchMouseEvent", {
+    type: "mousePressed",
+    ...point,
+    button: "left",
+    clickCount: 1,
+  });
+  await send("Input.dispatchMouseEvent", {
+    type: "mouseReleased",
+    ...point,
+    button: "left",
+    clickCount: 1,
+  });
+}
 async function screenshot(name) {
   const metrics = await send("Page.getLayoutMetrics");
   const bounds = metrics.cssContentSize;
@@ -94,7 +118,13 @@ try {
   await navigate("/");
   await noOverflow();
   await screenshot("landing-desktop.png");
-  await click('a[href="/dashboard?mode=demo"]');
+  await clickNavigationLink('.landing-header a[href="#features"]');
+  await until('location.hash === "#features"');
+  await navigate("/");
+  await clickNavigationLink('.landing-header a[href="/docs"]');
+  await until('location.pathname === "/docs"');
+  await navigate("/");
+  await clickNavigationLink('.landing-header nav a[href="/dashboard?mode=demo"]');
   await until('Boolean(document.querySelector("button[aria-label=\"Start demo\"]"))');
   await screenshot("dashboard-idle-desktop.png");
   await evaluate(

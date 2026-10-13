@@ -105,7 +105,7 @@ export function ConversationWorkspace({
           <span className="dashboard-helper">
             {mode === "demo"
               ? "Scripted demo. No live API calls."
-              : "Connected to your configured ElevenLabs agent."}
+              : "Local ElevenLabs agent · live conversations consume credits."}
           </span>
         </div>
         <span className="timer">

@@ -98,6 +98,13 @@ export function Settings({ configuration }: { configuration: VoiceConfiguration 
                 <ExternalLink size={13} />
               </Link>
             </Button>
+            {configuration.available && (
+              <Button asChild size="sm" style={{ marginLeft: 10 }}>
+                <Link href="/dashboard?mode=live&scenario=customer-support">
+                  Open live workspace
+                </Link>
+              </Button>
+            )}
           </div>
           <div className="config-security">
             <ShieldCheck size={16} />

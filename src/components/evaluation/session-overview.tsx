@@ -34,7 +34,11 @@ export function SessionOverview({ session, scenario }: SessionOverviewProps) {
         <dt>Duration</dt>
         <dd>{formatDuration(session.duration)}</dd>
         <dt>Completion</dt>
-        <dd>{COMPLETION_LABELS[session.completion]}</dd>
+        <dd>
+          {session.mode === "live" && session.completion === "finished"
+            ? "Ended by agent"
+            : COMPLETION_LABELS[session.completion]}
+        </dd>
         <dt>Session ID</dt>
         <dd>
           <code>{session.id}</code>

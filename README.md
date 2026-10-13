@@ -10,6 +10,12 @@ AgentLab is a focused portfolio MVP demonstrating a complete conversation-testin
 
 **Demo:** [Open AgentLab](https://agent-lab-beryl.vercel.app/dashboard?mode=demo) · **Source:** [NathanHodgkiss447/AgentLab](https://github.com/NathanHodgkiss447/AgentLab).
 
+**Local live demo (Loom):** Recording link coming soon.
+
+[Watch the local live walkthrough](https://www.loom.com/share/4d6bf983d16e45319af3219211726660)
+
+The walkthrough will show a genuine local ElevenLabs voice conversation, transcript, manual evaluation, and session export. The public Demo Mode uses scripted, pre-recorded audio; live access remains local-only.
+
 The owner reports the Vercel deployment is live. This workspace cannot access the deployed site, so independent production workflow, mobile, and audio verification remain pending. See [deployment checks](docs/deployment.md).
 
 ## 2. Features
@@ -72,7 +78,9 @@ npm start
 
 ## 7. ElevenLabs configuration
 
-The official SDK has now been installed from the user's terminal. Its actual exports were inspected and `npm run typecheck:live` passes. **A genuine voice session remains unverified.** The application also supports a Demo-only build when the SDK is absent.
+The official `@elevenlabs/react` SDK is installed, its actual exports and signatures were inspected, and `npm run typecheck:live` passes. **The project owner has successfully tested a genuine local live voice conversation.** Automated tests validate the adapter's lifecycle and SDK boundary; they do not substitute for real microphone/audio testing. Broader browser and live edge-case checks remain documented in the [verification record](docs/verification.md). The application also supports a Demo-only build when the SDK is absent.
+
+Local Live Mode is implemented and covered by lifecycle tests. With the environment below configured, open `/dashboard?mode=live&scenario=customer-support` or use Settings → Open live workspace. Explicit Live links override the Demo preference locally. See [integration and recording instructions](docs/elevenlabs.md) for agent setup, browser verification, and a short customer-support script.
 
 ```sh
 npm run setup:live
@@ -116,7 +124,7 @@ Vitest covers scoring, scenarios, validation, history persistence, transcript co
 
 Run `npm run check` for formatting, both TypeScript configurations, ESLint, tests, and static audio validation; run `npm run build` separately. Use `npm run format` to format source. UI-contract snapshots were captured before component extraction and are checked unchanged; interaction tests cover tab keyboard navigation, transition controls, and Strict Mode preference persistence. Review intentional UI changes before updating snapshots.
 
-TypeScript, ESLint, unit/component tests, and the production build were executed successfully. See [verification record](docs/verification.md) for exact results and the browser/live/deployment checks still pending. No live platform is mocked to claim a genuine connection.
+The latest local verification passed formatting, both TypeScript configurations, ESLint, **99 tests across 14 files**, validation of all 18 demo audio clips, and the production build. A genuine local live conversation was separately confirmed by the project owner. See the [verification record](docs/verification.md) for automated evidence and remaining browser, live edge-case, and deployment checks. SDK test doubles exercise our integration contract, not a real connection to the platform.
 
 ## 10. Deployment
 
@@ -152,7 +160,7 @@ See [security notes](docs/security.md) for boundaries and future production requ
 
 ## 13. Future improvements
 
-- Run real-agent lifecycle tests with dedicated credentials.
+- Expand real-agent lifecycle testing to cover permission denial, network interruption, reconnect, and microphone release on navigation.
 - Capture browser screenshots and complete desktop/mobile visual QA.
 - Authenticated live access with persistent per-user/global rate limits, usage caps, monitoring, and kill switch.
 - Scenario runners, annotations, interruption handling, and richer transcript correction UI.

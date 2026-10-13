@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getVoiceConfiguration } from "@/lib/elevenlabs/configuration";
 import { allowLocalVoice } from "@/lib/elevenlabs/security";
+import { describeVoiceServiceError, InvalidVoiceResponseError } from "@/lib/elevenlabs/errors";
 export const dynamic = "force-dynamic";
 const headers = { "Cache-Control": "no-store, private" };
 export async function POST(request: Request) {
@@ -17,6 +18,7 @@ export async function POST(request: Request) {
   try {
     const endpoint = new URL("https://api.elevenlabs.io/v1/convai/conversation/get-signed-url");
     endpoint.searchParams.set("agent_id", process.env.ELEVENLABS_AGENT_ID!);
+    endpoint.searchParams.set("include_conversation_id", "true");
     const response = await fetch(endpoint, {
       headers: { "xi-api-key": process.env.ELEVENLABS_API_KEY! },
       cache: "no-store",
@@ -38,12 +40,11 @@ export async function POST(request: Request) {
       typeof body.signed_url !== "string" ||
       !body.signed_url.startsWith("wss://")
     )
-      throw new Error("Invalid signed URL response");
+      throw new InvalidVoiceResponseError();
     return NextResponse.json({ signedUrl: body.signed_url }, { headers });
-  } catch {
-    return NextResponse.json(
-      { error: "The voice service could not be reached. Check your connection and try again." },
-      { status: 502, headers },
-    );
+  } catch (cause) {
+    const diagnostic = describeVoiceServiceError(cause);
+    console.error(`[AgentLab voice] ${diagnostic.code}`);
+    return NextResponse.json(diagnostic, { status: 502, headers });
   }
 }
