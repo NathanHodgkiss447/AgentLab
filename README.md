@@ -10,7 +10,7 @@ AgentLab is a focused portfolio MVP demonstrating a complete conversation-testin
 
 **Demo:** [Open AgentLab](https://agent-lab-beryl.vercel.app/dashboard?mode=demo) · **Source:** [NathanHodgkiss447/AgentLab](https://github.com/NathanHodgkiss447/AgentLab).
 
-**Local live demo (Loom):** Recording link coming soon.
+**Local live demo (Loom):**
 
 [Watch the local live walkthrough](https://www.loom.com/share/4d6bf983d16e45319af3219211726660)
 
